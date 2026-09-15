@@ -82,3 +82,12 @@ export const likes = pgTable(
     index("idx_likes_post_id").on(table.postId),
   ],
 );
+
+export const admins = pgTable("admins", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  username: varchar("username", { length: 255 }).notNull().unique(),
+  passwordHash: varchar("password_hash", { length: 255 }).notNull(),
+  twoFactorSecret: varchar("two_factor_secret", { length: 255 }),
+  isTwoFactorEnabled: boolean("is_two_factor_enabled").default(false),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});
