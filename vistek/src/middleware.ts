@@ -5,7 +5,7 @@ import { decrypt } from "@/lib/session";
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
-  // We only want to protect the admin routes
+  // protecting only the admin routes
   if (path.startsWith("/admin")) {
     const cookie = request.cookies.get("admin_session")?.value;
     const session = cookie ? await decrypt(cookie) : null;
@@ -19,7 +19,7 @@ export async function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Tell Next.js exactly which routes this middleware should run on
+// telling Next.js exactly which routes this middleware should run on
 export const config = {
   matcher: ["/admin/:path*"],
 };

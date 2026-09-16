@@ -16,7 +16,7 @@ export async function loginAdmin(formData: FormData): Promise<void> {
     redirect("/login?error=Missing_fields");
   }
 
-  // 1. fetch the admin user
+  // fetch the admin user
   const adminUsers = await db
     .select()
     .from(admins)
@@ -27,15 +27,15 @@ export async function loginAdmin(formData: FormData): Promise<void> {
     redirect("/login?error=Invalid_credentials");
   }
 
-  // 2. verify the password
+  // verify the password
   const isValid = await bcrypt.compare(password, admin.passwordHash);
   if (!isValid) {
     redirect("/login?error=Invalid_credentials");
   }
 
-  // 3. create the secure JWT cookie
+  // create the secure JWT cookie
   await createSession(admin.id);
 
-  // 4. redirect to the protected dashboard
+  // redirect to the protected dashboard
   redirect("/admin");
 }

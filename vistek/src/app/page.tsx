@@ -1,69 +1,130 @@
-import Image from "next/image";
+import Link from "next/link";
+import { db } from "@/db";
+import { posts, tags, postTags } from "@/db/schema";
+import { desc, eq } from "drizzle-orm";
+import SearchFilter from "@/components/SearchFilter";
 
-export default function Home() {
+export default async function PublicFeed({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; tag?: string }>;
+}) {
+  // Safely await Next.js 16 parameters
+  const resolvedParams = await searchParams;
+  const searchQuery = resolvedParams.q?.toLowerCase() || "";
+  const tagQuery = resolvedParams.tag || "";
+
+  // fetch ONLY live posts
+  const livePosts = await db
+    .select()
+    .from(posts)
+    .where(eq(posts.isDraft, false))
+    .orderBy(desc(posts.createdAt));
+
+  // attach tags
+  const postsWithTags = await Promise.all(
+    livePosts.map(async (post) => {
+      const attachedTags = await db
+        .select({ name: tags.name })
+        .from(postTags)
+        .innerJoin(tags, eq(postTags.tagId, tags.id))
+        .where(eq(postTags.postId, post.id));
+
+      return {
+        ...post,
+        tags: attachedTags.map((t) => t.name),
+      };
+    }),
+  );
+
+  // extract unique tags to populate filter buttons
+  const uniqueTags = Array.from(
+    new Set(postsWithTags.flatMap((p) => p.tags)),
+  ).sort();
+
+  // new parsing: turn the URL tag string into an array
+  const activeTags = resolvedParams.tag?.split(",").filter(Boolean) || [];
+
+  // apply URL filters to the data
+  const filteredPosts = postsWithTags.filter((post) => {
+    const matchesSearch =
+      !searchQuery ||
+      post.title.toLowerCase().includes(searchQuery) ||
+      post.contentHtml.toLowerCase().includes(searchQuery);
+
+    // NEW LOGIC: The post must include EVERY active tag selected by the user
+    const matchesTag =
+      activeTags.length === 0 || activeTags.every((t) => post.tags.includes(t));
+
+    return matchesSearch && matchesTag;
+  });
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="min-h-screen bg-black bg-gradient-to-b from-[#05010f] to-[#1a0b2e] p-8 font-mono text-white selection:bg-[#ff00aa] selection:text-white">
+      <div className="max-w-4xl mx-auto">
+        <header className="mb-12 border-b-2 border-[#00f3ff] pb-6 flex justify-between items-end">
+          <div>
+            <h1 className="text-5xl font-bold text-[#00f3ff] uppercase tracking-tighter drop-shadow-[0_0_10px_rgba(0,243,255,0.8)]">
+              VISTEK_NET
+            </h1>
+            <p className="text-[#ff00aa] mt-2 uppercase tracking-widest text-sm font-bold">
+              // Public_Transmission_Log
+            </p>
+          </div>
+          <Link
+            href="/login"
+            className="text-xs text-[#00f3ff]/50 hover:text-[#00f3ff] uppercase tracking-widest transition-colors"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            [SYS_ADMIN]
+          </Link>
+        </header>
+
+        {/* Inject the Client Component and pass it the unique tags */}
+        <SearchFilter allTags={uniqueTags} />
+
+        <div className="flex flex-col gap-8">
+          {filteredPosts.length === 0 ? (
+            <div className="border border-[#ff00aa]/30 p-8 text-center bg-[#1a0b2e]/50">
+              <p className="text-[#ff00aa] animate-pulse uppercase tracking-widest font-bold">
+                No active transmissions match query...
+              </p>
+            </div>
+          ) : (
+            filteredPosts.map((post) => (
+              <article
+                key={post.id}
+                className="border border-[#00f3ff]/30 bg-black/50 p-6 hover:border-[#00f3ff] hover:shadow-[0_0_15px_rgba(0,243,255,0.2)] transition-all group relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#00f3ff] to-[#ff00aa] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                <div className="flex gap-2 mb-3">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] uppercase tracking-widest text-black bg-[#ff00aa] px-2 py-0.5 font-bold"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <Link href={`/${post.slug}`}>
+                  <h2 className="text-2xl font-bold text-[#00f3ff] uppercase tracking-wide group-hover:text-white transition-colors mb-2">
+                    {post.title}
+                  </h2>
+                </Link>
+
+                <p className="text-[#00f3ff]/50 text-xs uppercase tracking-widest">
+                  LOGGED:{" "}
+                  {post.createdAt
+                    ? new Date(post.createdAt).toLocaleDateString()
+                    : "UNKNOWN"}
+                </p>
+              </article>
+            ))
+          )}
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }

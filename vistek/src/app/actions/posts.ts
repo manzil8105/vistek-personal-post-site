@@ -16,7 +16,7 @@ export async function createPost(formData: FormData) {
     throw new Error("Missing required fields");
   }
 
-  // 1. insert the post then GET the new unique ID back
+  // insert the post then GET the new unique ID back
   const [newPost] = await db
     .insert(posts)
     .values({
@@ -27,7 +27,7 @@ export async function createPost(formData: FormData) {
     })
     .returning({ id: posts.id });
 
-  // 2. process the Tags (if the user typed any)
+  // process the Tags (if the user typed any)
   if (rawTags) {
     // split by comma, remove extra spaces, ignore blanks
     const tagArray = rawTags
@@ -49,7 +49,7 @@ export async function createPost(formData: FormData) {
         .where(eq(tags.slug, tagSlug))
         .then((res) => res[0]);
 
-      // If it doesn't exist, make it
+      // if it doesn't exist, make it
       if (!existingTag) {
         const [insertedTag] = await db
           .insert(tags)
@@ -61,7 +61,7 @@ export async function createPost(formData: FormData) {
         existingTag = insertedTag;
       }
 
-      // 3. link the tag to the post in the junction table
+      // link the tag to the post in the junction table
       await db.insert(postTags).values({
         postId: newPost.id,
         tagId: existingTag.id,
@@ -86,16 +86,16 @@ export async function updatePost(formData: FormData) {
     throw new Error("Missing required fields");
   }
 
-  // 1. update the main post data
+  // update the main post data
   await db
     .update(posts)
     .set({ title, slug, contentHtml, isDraft })
     .where(eq(posts.id, id));
 
-  // 2. wipe the old tag relationships for this specific post
+  // wipe the old tag relationships for this specific post
   await db.delete(postTags).where(eq(postTags.postId, id));
 
-  // 3. process and link the updated tags
+  // process and link the updated tags
   if (rawTags) {
     const tagArray = rawTags
       .split(",")
@@ -126,7 +126,7 @@ export async function updatePost(formData: FormData) {
     }
   }
 
-  // 4. refresh the cache and redirect to the dashboard
+  // refresh the cache and redirect to the dashboard
   revalidatePath("/admin/posts");
   redirect("/admin/posts");
 }
