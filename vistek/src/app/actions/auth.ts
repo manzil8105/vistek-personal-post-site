@@ -7,16 +7,15 @@ import bcrypt from "bcrypt";
 import { createSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 
-// explicitly typing the return as Promise<void> fixes the form action error
 export async function loginAdmin(formData: FormData): Promise<void> {
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
+  const secretKey = formData.get("secretKey") as string; // NEW: The hidden key
 
   if (!username || !password) {
-    redirect("/login?error=Missing_fields");
+    redirect(`/gateway-override?error=Missing_fields&key=${secretKey}`);
   }
 
-  // fetch the admin user
   const adminUsers = await db
     .select()
     .from(admins)
@@ -24,18 +23,14 @@ export async function loginAdmin(formData: FormData): Promise<void> {
   const admin = adminUsers[0];
 
   if (!admin) {
-    redirect("/login?error=Invalid_credentials");
+    redirect(`/gateway-override?error=Invalid_credentials&key=${secretKey}`);
   }
 
-  // verify the password
   const isValid = await bcrypt.compare(password, admin.passwordHash);
   if (!isValid) {
-    redirect("/login?error=Invalid_credentials");
+    redirect(`/gateway-override?error=Invalid_credentials&key=${secretKey}`);
   }
 
-  // create the secure JWT cookie
   await createSession(admin.id);
-
-  // redirect to the protected dashboard
   redirect("/admin");
 }

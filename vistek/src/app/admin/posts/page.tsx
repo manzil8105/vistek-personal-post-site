@@ -1,13 +1,35 @@
 import Link from "next/link";
 import { db } from "@/db";
 import { posts, tags, postTags } from "@/db/schema";
-import { desc, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
+import SearchFilter from "@/components/SearchFilter";
+import Pagination from "@/components/Pagination";
+import { deletePost } from "@/app/actions/posts";
+import DeletePostButton from "@/components/DeletePostButton";
+import CopyLinkButton from "@/components/CopyLinkButton";
 
-export default async function ManagePosts() {
-  // 1. fetch all posts from Supabase, newest first
-  const allPosts = await db.select().from(posts).orderBy(desc(posts.createdAt));
+export default async function ManagePosts({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    q?: string;
+    tag?: string;
+    page?: string;
+    sort?: string;
+    exclude?: string;
+  }>;
+}) {
+  const resolvedParams = await searchParams;
+  const searchQuery = resolvedParams.q?.toLowerCase() || "";
+  const tagQuery = resolvedParams.tag || "";
+  const sortQuery = resolvedParams.sort || "desc";
+  const excludeQuery = resolvedParams.exclude || "";
 
-  // 2. Cross-reference the database to fetch the attached tags for each post
+  const currentPage = Number(resolvedParams.page) || 1;
+  const POSTS_PER_PAGE = 10;
+
+  const allPosts = await db.select().from(posts);
+
   const postsWithTags = await Promise.all(
     allPosts.map(async (post) => {
       const attachedTags = await db
@@ -16,12 +38,42 @@ export default async function ManagePosts() {
         .innerJoin(tags, eq(postTags.tagId, tags.id))
         .where(eq(postTags.postId, post.id));
 
-      return {
-        ...post,
-        tags: attachedTags.map((t) => t.name),
-      };
+      return { ...post, tags: attachedTags.map((t) => t.name) };
     }),
   );
+
+  const uniqueTags = Array.from(
+    new Set(postsWithTags.flatMap((p) => p.tags)),
+  ).sort();
+  const activeTags = tagQuery.split(",").filter(Boolean);
+  const excludedTags = excludeQuery.split(",").filter(Boolean);
+
+  let filteredPosts = postsWithTags.filter((post) => {
+    const matchesSearch =
+      !searchQuery ||
+      post.title.toLowerCase().includes(searchQuery) ||
+      post.contentHtml.toLowerCase().includes(searchQuery);
+
+    const matchesTags =
+      activeTags.length === 0 || activeTags.every((t) => post.tags.includes(t));
+    const hasNoExcludedTags =
+      excludedTags.length === 0 ||
+      !excludedTags.some((t) => post.tags.includes(t));
+
+    return matchesSearch && matchesTags && hasNoExcludedTags;
+  });
+
+  filteredPosts = filteredPosts.sort((a, b) => {
+    const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+    if (sortQuery === "asc") return dateA - dateB;
+    return dateB - dateA;
+  });
+
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
 
   return (
     <div className="flex flex-col h-full text-white font-mono">
@@ -37,8 +89,10 @@ export default async function ManagePosts() {
         </Link>
       </div>
 
+      <SearchFilter allTags={uniqueTags} />
+
       <div className="flex-grow overflow-auto relative z-10">
-        {postsWithTags.length === 0 ? (
+        {paginatedPosts.length === 0 ? (
           <p className="text-[#00f3ff]/50 animate-pulse text-center mt-10 uppercase tracking-widest">
             No records found in the databanks...
           </p>
@@ -58,12 +112,11 @@ export default async function ManagePosts() {
               </tr>
             </thead>
             <tbody>
-              {postsWithTags.map((post) => (
+              {paginatedPosts.map((post) => (
                 <tr
                   key={post.id}
                   className="border-b border-[#00f3ff]/10 hover:bg-[#00f3ff]/5 transition-colors"
                 >
-                  {/* Clickable Title */}
                   <td className="p-2">
                     <Link
                       href={`/admin/posts/${post.id}`}
@@ -72,12 +125,9 @@ export default async function ManagePosts() {
                       {post.title}
                     </Link>
                   </td>
-
-                  {/* Tags Column */}
                   <td className="p-2 text-xs text-[#b829ff]">
                     {post.tags.length > 0 ? post.tags.join(" // ") : "---"}
                   </td>
-
                   <td className="p-2 text-xs">
                     {post.isDraft ? (
                       <span className="text-yellow-500 border border-yellow-500/50 px-2 py-1 bg-yellow-500/10">
@@ -94,15 +144,21 @@ export default async function ManagePosts() {
                       ? new Date(post.createdAt).toLocaleDateString()
                       : "UNKNOWN"}
                   </td>
-
-                  {/* Edit Button */}
-                  <td className="p-2 text-right">
-                    <Link
-                      href={`/admin/posts/${post.id}`}
-                      className="text-xs text-[#ff00aa] border border-[#ff00aa]/50 px-2 py-1 hover:bg-[#ff00aa] hover:text-black transition-colors uppercase tracking-widest"
-                    >
-                      [EDIT]
-                    </Link>
+                  <td className="p-2">
+                    {/* INJECTED COPY BUTTON INTO ACTION FLEX CONTAINER */}
+                    <div className="flex justify-end gap-2 items-center">
+                      <CopyLinkButton slug={post.slug} />
+                      <Link
+                        href={`/admin/posts/${post.id}`}
+                        className="text-xs text-[#ff00aa] border border-[#ff00aa]/50 px-2 py-1 hover:bg-[#ff00aa] hover:text-black transition-colors uppercase tracking-widest"
+                      >
+                        [EDIT]
+                      </Link>
+                      <form action={deletePost}>
+                        <input type="hidden" name="id" value={post.id} />
+                        <DeletePostButton />
+                      </form>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -110,6 +166,8 @@ export default async function ManagePosts() {
           </table>
         )}
       </div>
+
+      <Pagination currentPage={currentPage} totalPages={totalPages} />
     </div>
   );
 }

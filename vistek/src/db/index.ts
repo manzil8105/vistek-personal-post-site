@@ -13,7 +13,7 @@ if (!process.env.DATABASE_URL) {
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  // Some cloud providers explicitly require SSL for remote connections
+  // some cloud providers explicitly require SSL for remote connections
   ssl:
     process.env.NODE_ENV === "production"
       ? undefined

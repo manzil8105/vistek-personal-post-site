@@ -46,6 +46,19 @@ export default function NewPostForm() {
           />
         </div>
 
+        {/* THUMBNAIL INPUT INJECTED HERE */}
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+            Thumbnail_URL_ (Optional)
+          </label>
+          <input
+            type="url"
+            name="thumbnailUrl"
+            placeholder="https://i.imgur.com/..."
+            className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full"
+          />
+        </div>
+
         <div className="flex flex-col gap-2">
           <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
             Tags_ (Comma separated)
@@ -66,7 +79,7 @@ export default function NewPostForm() {
             name="contentHtml"
             required
             rows={12}
-            placeholder="<p>Enter your raw HTML or markdown here...</p>"
+            placeholder="Write your markdown content here..."
             className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full resize-y font-mono text-sm leading-relaxed"
           ></textarea>
         </div>

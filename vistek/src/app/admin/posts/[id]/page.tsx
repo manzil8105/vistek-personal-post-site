@@ -1,28 +1,25 @@
 import { db } from "@/db";
 import { posts, tags, postTags } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { updatePost } from "@/app/actions/posts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { updatePost, deletePost } from "@/app/actions/posts";
+import DeletePostButton from "@/components/DeletePostButton";
 
-// 1. type params as a Promise
 export default async function EditPost({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  // 2. await the promise before reading the ID
   const resolvedParams = await params;
   const postId = resolvedParams.id;
 
-  // fetch the specific post
   const [post] = await db.select().from(posts).where(eq(posts.id, postId));
 
   if (!post) {
-    notFound(); // this will no longer false-trigger!
+    notFound();
   }
 
-  // 2. fetch the attached tags
   const attachedTags = await db
     .select({ name: tags.name })
     .from(postTags)
@@ -49,7 +46,6 @@ export default async function EditPost({
         action={updatePost}
         className="flex flex-col gap-6 max-w-3xl relative z-10"
       >
-        {/* HIDDEN INPUT: The Server Action needs this to know which post to update */}
         <input type="hidden" name="id" value={post.id} />
 
         <div className="flex gap-4">
@@ -66,7 +62,6 @@ export default async function EditPost({
             />
           </div>
 
-          {/*  toggle to publish posts */}
           <div className="flex flex-col gap-2 w-48">
             <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
               Status_
@@ -91,6 +86,20 @@ export default async function EditPost({
             name="slug"
             defaultValue={post.slug}
             required
+            className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full"
+          />
+        </div>
+
+        {/* thumbnail input injected here */}
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+            Thumbnail_URL_ (Optional)
+          </label>
+          <input
+            type="url"
+            name="thumbnailUrl"
+            defaultValue={post.thumbnailUrl || ""}
+            placeholder="https://i.imgur.com/..."
             className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full"
           />
         </div>
@@ -127,6 +136,17 @@ export default async function EditPost({
           Execute_Override()
         </button>
       </form>
+
+      {/* danger stuff */}
+      <div className="mt-12 pt-6 border-t border-red-900/50 flex justify-between items-center max-w-3xl relative z-10">
+        <span className="text-red-500/50 text-xs uppercase tracking-widest font-bold">
+          // Danger_Zone: Irreversible_Action
+        </span>
+        <form action={deletePost}>
+          <input type="hidden" name="id" value={post.id} />
+          <DeletePostButton className="px-6 py-2 bg-transparent border-2 border-red-600 text-red-500 font-bold hover:bg-red-600 hover:text-white hover:shadow-[0_0_15px_rgba(255,0,0,0.8)] transition-all uppercase tracking-widest cursor-pointer" />
+        </form>
+      </div>
     </div>
   );
 }

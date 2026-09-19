@@ -1,0 +1,1692 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.kilo/
+  worktrees/
+    .metadata_never_index
+public/
+  file.svg
+  globe.svg
+  next.svg
+  vercel.svg
+  window.svg
+src/
+  app/
+    [slug]/
+      page.tsx
+    actions/
+      auth.ts
+      posts.ts
+    admin/
+      posts/
+        [id]/
+          page.tsx
+        new/
+          page.tsx
+        page.tsx
+      layout.tsx
+      page.tsx
+    login/
+      page.tsx
+    favicon.ico
+    globals.css
+    layout.tsx
+    page.tsx
+  components/
+    Pagination.tsx
+    SearchFilter.tsx
+  db/
+    index.ts
+    schema.ts
+  lib/
+    session.ts
+  middleware.ts
+.gitignore
+AGENTS.md
+CLAUDE.md
+drizzle.config.ts
+eslint.config.mjs
+next.config.ts
+package.json
+postcss.config.mjs
+README.md
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".kilo/worktrees/.metadata_never_index">
+
+</file>
+
+<file path="public/file.svg">
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
+</file>
+
+<file path="public/globe.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+</file>
+
+<file path="public/next.svg">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
+</file>
+
+<file path="public/vercel.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+</file>
+
+<file path="public/window.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+</file>
+
+<file path="src/app/[slug]/page.tsx">
+import { db } from "@/db";
+import { posts, tags, postTags } from "@/db/schema";
+import { eq } from "drizzle-orm";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+
+export default async function PublicPostReader({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const resolvedParams = await params;
+  const postSlug = resolvedParams.slug;
+
+  // fetch the post by its unique URL slug
+  const [post] = await db.select().from(posts).where(eq(posts.slug, postSlug));
+
+  // security Check, if it doesn't exist / if it is still a draft,  a 404
+  if (!post || post.isDraft) {
+    notFound();
+  }
+
+  // fetch tags
+  const attachedTags = await db
+    .select({ name: tags.name })
+    .from(postTags)
+    .innerJoin(tags, eq(postTags.tagId, tags.id))
+    .where(eq(postTags.postId, post.id));
+
+  const tagList = attachedTags.map((t) => t.name);
+
+  return (
+    <main className="min-h-screen bg-black bg-gradient-to-b from-[#05010f] to-[#1a0b2e] p-8 font-mono text-white selection:bg-[#00f3ff] selection:text-black">
+      <div className="max-w-3xl mx-auto">
+        <div className="mb-12">
+          <Link
+            href="/"
+            className="text-[#ff00aa] hover:text-[#00f3ff] transition-colors text-sm uppercase tracking-widest font-bold border border-[#ff00aa] hover:border-[#00f3ff] px-4 py-2 bg-black"
+          >
+            {"<- RETURN_TO_NODE"}
+          </Link>
+        </div>
+
+        <article className="bg-[#05010f]/90 border border-[#00f3ff]/50 shadow-[0_0_20px_rgba(0,243,255,0.1)] p-8 md:p-12 relative">
+          {/* Header block */}
+          <header className="mb-10 border-b border-[#ff00aa]/30 pb-8">
+            <div className="flex flex-wrap gap-2 mb-6">
+              {tagList.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-xs uppercase tracking-widest text-[#00f3ff] border border-[#00f3ff]/50 px-2 py-1 bg-[#00f3ff]/10"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+
+            <h1 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-tight drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] mb-4">
+              {post.title}
+            </h1>
+
+            <p className="text-[#ff00aa] text-sm uppercase tracking-widest font-bold">
+              TIMESTAMP:{" "}
+              {post.createdAt
+                ? new Date(post.createdAt).toLocaleDateString()
+                : "UNKNOWN"}
+            </p>
+          </header>
+
+          {/* HTML content injection */}
+          <div
+            className="prose prose-invert max-w-none break-words prose-p:text-gray-300 prose-headings:text-[#00f3ff] prose-headings:uppercase prose-headings:tracking-wider prose-a:text-[#ff00aa] prose-a:no-underline hover:prose-a:underline prose-strong:text-white"
+            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+          />
+        </article>
+      </div>
+    </main>
+  );
+}
+</file>
+
+<file path="src/app/actions/auth.ts">
+"use server";
+
+import { db } from "@/db";
+import { admins } from "@/db/schema";
+import { eq } from "drizzle-orm";
+import bcrypt from "bcrypt";
+import { createSession } from "@/lib/session";
+import { redirect } from "next/navigation";
+
+// explicitly typing the return as Promise<void> fixes the form action error
+export async function loginAdmin(formData: FormData): Promise<void> {
+  const username = formData.get("username") as string;
+  const password = formData.get("password") as string;
+
+  if (!username || !password) {
+    redirect("/login?error=Missing_fields");
+  }
+
+  // fetch the admin user
+  const adminUsers = await db
+    .select()
+    .from(admins)
+    .where(eq(admins.username, username));
+  const admin = adminUsers[0];
+
+  if (!admin) {
+    redirect("/login?error=Invalid_credentials");
+  }
+
+  // verify the password
+  const isValid = await bcrypt.compare(password, admin.passwordHash);
+  if (!isValid) {
+    redirect("/login?error=Invalid_credentials");
+  }
+
+  // create the secure JWT cookie
+  await createSession(admin.id);
+
+  // redirect to the protected dashboard
+  redirect("/admin");
+}
+</file>
+
+<file path="src/app/actions/posts.ts">
+"use server";
+
+import { db } from "@/db";
+import { posts, tags, postTags } from "@/db/schema";
+import { eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+
+export async function createPost(formData: FormData) {
+  const title = formData.get("title") as string;
+  const slug = formData.get("slug") as string;
+  const contentHtml = formData.get("contentHtml") as string;
+  const rawTags = formData.get("tags") as string;
+
+  if (!title || !slug || !contentHtml) {
+    throw new Error("Missing required fields");
+  }
+
+  // insert the post then GET the new unique ID back
+  const [newPost] = await db
+    .insert(posts)
+    .values({
+      title,
+      slug,
+      contentHtml,
+      isDraft: true,
+    })
+    .returning({ id: posts.id });
+
+  // process the Tags (if the user typed any)
+  if (rawTags) {
+    // split by comma, remove extra spaces, ignore blanks
+    const tagArray = rawTags
+      .split(",")
+      .map((t) => t.trim())
+      .filter((t) => t !== "");
+
+    for (const tagName of tagArray) {
+      // auto generate a URL-safe slug for the tag
+      const tagSlug = tagName
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)+/g, "");
+
+      // check if this tag is already in the database
+      let existingTag = await db
+        .select()
+        .from(tags)
+        .where(eq(tags.slug, tagSlug))
+        .then((res) => res[0]);
+
+      // if it doesn't exist, make it
+      if (!existingTag) {
+        const [insertedTag] = await db
+          .insert(tags)
+          .values({
+            name: tagName,
+            slug: tagSlug,
+          })
+          .returning();
+        existingTag = insertedTag;
+      }
+
+      // link the tag to the post in the junction table
+      await db.insert(postTags).values({
+        postId: newPost.id,
+        tagId: existingTag.id,
+      });
+    }
+  }
+
+  // clear cache and redirect
+  revalidatePath("/admin/posts");
+  redirect("/admin/posts");
+}
+
+export async function updatePost(formData: FormData) {
+  const id = formData.get("id") as string;
+  const title = formData.get("title") as string;
+  const slug = formData.get("slug") as string;
+  const contentHtml = formData.get("contentHtml") as string;
+  const rawTags = formData.get("tags") as string;
+  const isDraft = formData.get("isDraft") === "true"; // Handles the Draft/Live toggle
+
+  if (!id || !title || !slug || !contentHtml) {
+    throw new Error("Missing required fields");
+  }
+
+  // update the main post data
+  await db
+    .update(posts)
+    .set({ title, slug, contentHtml, isDraft })
+    .where(eq(posts.id, id));
+
+  // wipe the old tag relationships for this specific post
+  await db.delete(postTags).where(eq(postTags.postId, id));
+
+  // process and link the updated tags
+  if (rawTags) {
+    const tagArray = rawTags
+      .split(",")
+      .map((t) => t.trim())
+      .filter((t) => t !== "");
+
+    for (const tagName of tagArray) {
+      const tagSlug = tagName
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)+/g, "");
+
+      let existingTag = await db
+        .select()
+        .from(tags)
+        .where(eq(tags.slug, tagSlug))
+        .then((res) => res[0]);
+
+      if (!existingTag) {
+        const [insertedTag] = await db
+          .insert(tags)
+          .values({ name: tagName, slug: tagSlug })
+          .returning();
+        existingTag = insertedTag;
+      }
+
+      await db.insert(postTags).values({ postId: id, tagId: existingTag.id });
+    }
+  }
+
+  // refresh the cache and redirect to the dashboard
+  revalidatePath("/admin/posts");
+  redirect("/admin/posts");
+}
+</file>
+
+<file path="src/app/admin/posts/[id]/page.tsx">
+import { db } from "@/db";
+import { posts, tags, postTags } from "@/db/schema";
+import { eq } from "drizzle-orm";
+import { updatePost } from "@/app/actions/posts";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
+// 1. type params as a Promise
+export default async function EditPost({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  // 2. await the promise before reading the ID
+  const resolvedParams = await params;
+  const postId = resolvedParams.id;
+
+  // fetch the specific post
+  const [post] = await db.select().from(posts).where(eq(posts.id, postId));
+
+  if (!post) {
+    notFound(); // this will no longer false-trigger!
+  }
+
+  // 2. fetch the attached tags
+  const attachedTags = await db
+    .select({ name: tags.name })
+    .from(postTags)
+    .innerJoin(tags, eq(postTags.tagId, tags.id))
+    .where(eq(postTags.postId, postId));
+
+  const tagString = attachedTags.map((t) => t.name).join(", ");
+
+  return (
+    <div className="flex flex-col h-full text-white font-mono">
+      <div className="mb-6 border-b border-[#00f3ff]/30 pb-4 flex justify-between items-center">
+        <h2 className="text-xl text-[#00f3ff] uppercase tracking-widest drop-shadow-[0_0_5px_rgba(0,243,255,0.5)]">
+          Data_Core // Edit_Record
+        </h2>
+        <Link
+          href="/admin/posts"
+          className="text-[#ff00aa] hover:text-[#00f3ff] transition-colors text-sm uppercase tracking-widest"
+        >
+          [Abort_Edit]
+        </Link>
+      </div>
+
+      <form
+        action={updatePost}
+        className="flex flex-col gap-6 max-w-3xl relative z-10"
+      >
+        {/* HIDDEN INPUT: The Server Action needs this to know which post to update */}
+        <input type="hidden" name="id" value={post.id} />
+
+        <div className="flex gap-4">
+          <div className="flex flex-col gap-2 flex-grow">
+            <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+              Title_
+            </label>
+            <input
+              type="text"
+              name="title"
+              defaultValue={post.title}
+              required
+              className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full"
+            />
+          </div>
+
+          {/*  toggle to publish posts */}
+          <div className="flex flex-col gap-2 w-48">
+            <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+              Status_
+            </label>
+            <select
+              name="isDraft"
+              defaultValue={post.isDraft ? "true" : "false"}
+              className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] outline-none text-[#00f3ff] w-full appearance-none cursor-pointer"
+            >
+              <option value="true">DRAFT</option>
+              <option value="false">LIVE</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+            URL_Slug_
+          </label>
+          <input
+            type="text"
+            name="slug"
+            defaultValue={post.slug}
+            required
+            className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full"
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+            Tags_ (Comma separated)
+          </label>
+          <input
+            type="text"
+            name="tags"
+            defaultValue={tagString}
+            className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full"
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+            Content_
+          </label>
+          <textarea
+            name="contentHtml"
+            defaultValue={post.contentHtml}
+            required
+            rows={12}
+            className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full resize-y font-mono text-sm leading-relaxed"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          className="mt-4 px-8 py-3 bg-transparent border-2 border-[#00f3ff] text-[#00f3ff] font-bold hover:bg-[#00f3ff] hover:text-black hover:shadow-[0_0_15px_rgba(0,243,255,0.8)] transition-all uppercase tracking-widest w-fit cursor-pointer self-end"
+        >
+          Execute_Override()
+        </button>
+      </form>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/admin/posts/new/page.tsx">
+import { createPost } from "@/app/actions/posts";
+import Link from "next/link";
+
+export default function NewPostForm() {
+  return (
+    <div className="flex flex-col h-full text-white font-mono">
+      <div className="mb-6 border-b border-[#00f3ff]/30 pb-4 flex justify-between items-center">
+        <h2 className="text-xl text-[#00f3ff] uppercase tracking-widest drop-shadow-[0_0_5px_rgba(0,243,255,0.5)]">
+          Data_Core // Inject_Record
+        </h2>
+        <Link
+          href="/admin/posts"
+          className="text-[#ff00aa] hover:text-[#00f3ff] transition-colors text-sm uppercase tracking-widest"
+        >
+          [Abort_Injection]
+        </Link>
+      </div>
+
+      <form
+        action={createPost}
+        className="flex flex-col gap-6 max-w-3xl relative z-10"
+      >
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+            Title_
+          </label>
+          <input
+            type="text"
+            name="title"
+            required
+            placeholder="Enter post title..."
+            className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full"
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+            URL_Slug_ (e.g. my-first-post)
+          </label>
+          <input
+            type="text"
+            name="slug"
+            required
+            placeholder="my-cyberpunk-post"
+            className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full"
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+            Tags_ (Comma separated)
+          </label>
+          <input
+            type="text"
+            name="tags"
+            placeholder="cyberpunk, nextjs, devlog"
+            className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full"
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+            Content
+          </label>
+          <textarea
+            name="contentHtml"
+            required
+            rows={12}
+            placeholder="<p>Enter your raw HTML or markdown here...</p>"
+            className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all w-full resize-y font-mono text-sm leading-relaxed"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          className="mt-4 px-8 py-3 bg-transparent border-2 border-[#00f3ff] text-[#00f3ff] font-bold hover:bg-[#00f3ff] hover:text-black hover:shadow-[0_0_15px_rgba(0,243,255,0.8)] transition-all uppercase tracking-widest w-fit cursor-pointer self-end"
+        >
+          Execute_Write()
+        </button>
+      </form>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/admin/posts/page.tsx">
+import Link from "next/link";
+import { db } from "@/db";
+import { posts, tags, postTags } from "@/db/schema";
+import { desc, eq } from "drizzle-orm";
+
+export default async function ManagePosts() {
+  // 1. fetch all posts from Supabase, newest first
+  const allPosts = await db.select().from(posts).orderBy(desc(posts.createdAt));
+
+  // 2. Cross-reference the database to fetch the attached tags for each post
+  const postsWithTags = await Promise.all(
+    allPosts.map(async (post) => {
+      const attachedTags = await db
+        .select({ name: tags.name })
+        .from(postTags)
+        .innerJoin(tags, eq(postTags.tagId, tags.id))
+        .where(eq(postTags.postId, post.id));
+
+      return {
+        ...post,
+        tags: attachedTags.map((t) => t.name),
+      };
+    }),
+  );
+
+  return (
+    <div className="flex flex-col h-full text-white font-mono">
+      <div className="flex justify-between items-center mb-6 border-b border-[#00f3ff]/30 pb-4">
+        <h2 className="text-xl text-[#00f3ff] uppercase tracking-widest drop-shadow-[0_0_5px_rgba(0,243,255,0.5)]">
+          Data_Core // Posts
+        </h2>
+        <Link
+          href="/admin/posts/new"
+          className="px-4 py-2 bg-[#1a0b2e] border border-[#ff00aa] text-[#ff00aa] hover:bg-[#ff00aa] hover:text-black hover:shadow-[0_0_15px_rgba(255,0,170,0.8)] transition-all uppercase tracking-widest text-sm"
+        >
+          + Initialize_New_Record
+        </Link>
+      </div>
+
+      <div className="flex-grow overflow-auto relative z-10">
+        {postsWithTags.length === 0 ? (
+          <p className="text-[#00f3ff]/50 animate-pulse text-center mt-10 uppercase tracking-widest">
+            No records found in the databanks...
+          </p>
+        ) : (
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-[#ff00aa]/50 text-[#ff00aa]">
+                <th className="p-2 uppercase text-xs tracking-wider">Title</th>
+                <th className="p-2 uppercase text-xs tracking-wider">Tags</th>
+                <th className="p-2 uppercase text-xs tracking-wider">Status</th>
+                <th className="p-2 uppercase text-xs tracking-wider">
+                  Created
+                </th>
+                <th className="p-2 uppercase text-xs tracking-wider text-right">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {postsWithTags.map((post) => (
+                <tr
+                  key={post.id}
+                  className="border-b border-[#00f3ff]/10 hover:bg-[#00f3ff]/5 transition-colors"
+                >
+                  {/* Clickable Title */}
+                  <td className="p-2">
+                    <Link
+                      href={`/admin/posts/${post.id}`}
+                      className="text-[#00f3ff] font-bold hover:text-[#ff00aa] hover:underline transition-all"
+                    >
+                      {post.title}
+                    </Link>
+                  </td>
+
+                  {/* Tags Column */}
+                  <td className="p-2 text-xs text-[#b829ff]">
+                    {post.tags.length > 0 ? post.tags.join(" // ") : "---"}
+                  </td>
+
+                  <td className="p-2 text-xs">
+                    {post.isDraft ? (
+                      <span className="text-yellow-500 border border-yellow-500/50 px-2 py-1 bg-yellow-500/10">
+                        DRAFT
+                      </span>
+                    ) : (
+                      <span className="text-green-500 border border-green-500/50 px-2 py-1 bg-green-500/10">
+                        LIVE
+                      </span>
+                    )}
+                  </td>
+                  <td className="p-2 text-xs text-gray-500">
+                    {post.createdAt
+                      ? new Date(post.createdAt).toLocaleDateString()
+                      : "UNKNOWN"}
+                  </td>
+
+                  {/* Edit Button */}
+                  <td className="p-2 text-right">
+                    <Link
+                      href={`/admin/posts/${post.id}`}
+                      className="text-xs text-[#ff00aa] border border-[#ff00aa]/50 px-2 py-1 hover:bg-[#ff00aa] hover:text-black transition-colors uppercase tracking-widest"
+                    >
+                      [EDIT]
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/admin/layout.tsx">
+import Link from "next/link";
+import { ReactNode } from "react";
+
+export default function AdminLayout({ children }: { children: ReactNode }) {
+  return (
+    <main className="min-h-screen bg-black bg-gradient-to-b from-[#1a0b2e] to-[#05010f] p-8 font-mono text-white">
+      <div className="bg-[#05010f]/90 border border-[#00f3ff] shadow-[0_0_20px_rgba(0,243,255,0.2)] p-1 max-w-6xl mx-auto relative">
+        {/* cyberpunk type top status bar */}
+        <div className="bg-[#00f3ff] text-black px-4 py-2 flex justify-between items-center font-bold tracking-widest uppercase">
+          <span>VISTEK // OVERSEER_NODE</span>
+          <span className="animate-pulse">STATUS: ONLINE</span>
+        </div>
+
+        <div className="p-8 min-h-[70vh]">
+          <h1 className="text-3xl font-bold mb-8 border-b border-[#ff00aa]/50 pb-4 text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_8px_rgba(255,0,170,0.6)]">
+            Network_Dashboard
+          </h1>
+
+          <div className="grid grid-cols-4 gap-8">
+            {/* Sidebar Navigation */}
+            <div className="col-span-1 flex flex-col gap-3">
+              <div className="text-xs text-[#00f3ff] mb-2 uppercase tracking-widest border-b border-[#00f3ff]/30 pb-2">
+                Command Modules
+              </div>
+
+              <Link
+                href="/admin/posts"
+                className="block text-left px-4 py-3 bg-[#1a0b2e]/50 border border-[#4a0d3a] text-[#ff00aa] hover:bg-[#ff00aa]/10 hover:border-[#ff00aa] hover:shadow-[0_0_15px_rgba(255,0,170,0.5)] transition-all cursor-pointer"
+              >
+                [+] Manage_Posts
+              </Link>
+              <Link
+                href="/admin/tags"
+                className="block text-left px-4 py-3 bg-[#1a0b2e]/50 border border-[#4a0d3a] text-[#ff00aa] hover:bg-[#ff00aa]/10 hover:border-[#ff00aa] hover:shadow-[0_0_15px_rgba(255,0,170,0.5)] transition-all cursor-pointer"
+              >
+                [#] Manage_Tags
+              </Link>
+              <Link
+                href="/admin/security"
+                className="block text-left px-4 py-3 bg-[#1a0b2e]/50 border border-[#4a0d3a] text-[#ff00aa] hover:bg-[#ff00aa]/10 hover:border-[#ff00aa] hover:shadow-[0_0_15px_rgba(255,0,170,0.5)] transition-all cursor-pointer"
+              >
+                [*] Security_2FA
+              </Link>
+
+              <div className="mt-8">
+                <button className="w-full text-left px-4 py-3 border border-red-600 text-red-500 hover:bg-red-900/30 hover:border-red-500 hover:shadow-[0_0_15px_rgba(255,0,0,0.6)] transition-all uppercase tracking-widest cursor-pointer">
+                  Terminate_Session
+                </button>
+              </div>
+            </div>
+
+            {/* main workspace */}
+            <div className="col-span-3 bg-black border border-[#00f3ff]/30 p-6 relative overflow-hidden flex flex-col min-h-[500px]">
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#00f3ff10_1px,transparent_1px),linear-gradient(to_bottom,#00f3ff10_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none"></div>
+
+              <div className="relative z-10 w-full h-full flex-grow flex flex-col">
+                {children}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+</file>
+
+<file path="src/app/admin/page.tsx">
+export default function AdminRootPage() {
+  return (
+    <div className="flex items-center justify-center h-full min-h-[400px]">
+      <span className="text-[#00f3ff]/60 font-bold uppercase tracking-widest animate-pulse">
+        Awaiting Input...
+      </span>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/login/page.tsx">
+import { loginAdmin } from "../actions/auth";
+
+export default function LoginPage() {
+  return (
+    <main className="min-h-screen bg-black bg-gradient-to-b from-[#1a0b2e] to-[#05010f] flex items-center justify-center p-4 font-mono">
+      {/* Cyberpunk Terminal Container */}
+      <div className="bg-[#05010f]/90 border border-[#ff00aa] shadow-[0_0_20px_rgba(255,0,170,0.4)] p-8 w-full max-w-sm relative overflow-hidden">
+        {/* Top Cyan Accent Line */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00f3ff] to-[#ff00aa]"></div>
+
+        <h1 className="text-[#00f3ff] text-2xl font-bold mb-8 tracking-widest uppercase text-center drop-shadow-[0_0_8px_rgba(0,243,255,0.8)]">
+          SYSTEM_LOGIN
+        </h1>
+
+        <form action={loginAdmin} className="flex flex-col gap-6 text-white">
+          <div className="flex flex-col gap-2">
+            <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+              Username
+            </label>
+            <input
+              type="text"
+              name="username"
+              required
+              className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-xs font-bold text-[#ff00aa] uppercase tracking-wider drop-shadow-[0_0_5px_rgba(255,0,170,0.5)]">
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              required
+              className="px-3 py-2 bg-black border border-[#4a0d3a] focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] outline-none text-[#00f3ff] transition-all"
+            />
+          </div>
+
+          <div className="flex justify-end mt-4">
+            <button
+              type="submit"
+              className="px-8 py-2 bg-transparent border-2 border-[#ff00aa] text-[#ff00aa] font-bold hover:bg-[#ff00aa] hover:text-black hover:shadow-[0_0_15px_rgba(255,0,170,0.8)] transition-all uppercase tracking-widest cursor-pointer"
+            >
+              Enter
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  );
+}
+</file>
+
+<file path="src/app/globals.css">
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+</file>
+
+<file path="src/app/layout.tsx">
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Create Next App",
+  description: "Generated by create next app",
+};
+
+export default function RootLayout({ children }: LayoutProps<"/">) {
+  return (
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
+    </html>
+  );
+}
+</file>
+
+<file path="src/app/page.tsx">
+import Link from "next/link";
+import { db } from "@/db";
+import { posts, tags, postTags } from "@/db/schema";
+import { desc, eq } from "drizzle-orm";
+import SearchFilter from "@/components/SearchFilter";
+import Pagination from "@/components/Pagination";
+
+export default async function PublicFeed({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    q?: string;
+    tag?: string;
+    page?: string;
+    sort?: string;
+    exclude?: string;
+  }>;
+}) {
+  const resolvedParams = await searchParams;
+  const searchQuery = resolvedParams.q?.toLowerCase() || "";
+  const tagQuery = resolvedParams.tag || "";
+  const sortQuery = resolvedParams.sort || "desc";
+  const excludeQuery = resolvedParams.exclude || "";
+
+  // --- PAGINATION SETUP ---
+  const currentPage = Number(resolvedParams.page) || 1;
+  const POSTS_PER_PAGE = 5;
+
+  // 1. Fetch live posts (we remove the orderBy here because we sort dynamically later)
+  const livePosts = await db
+    .select()
+    .from(posts)
+    .where(eq(posts.isDraft, false));
+
+  // 2. Attach tags to each post
+  const postsWithTags = await Promise.all(
+    livePosts.map(async (post) => {
+      const attachedTags = await db
+        .select({ name: tags.name })
+        .from(postTags)
+        .innerJoin(tags, eq(postTags.tagId, tags.id))
+        .where(eq(postTags.postId, post.id));
+
+      return { ...post, tags: attachedTags.map((t) => t.name) };
+    }),
+  );
+
+  // 3. Extract unique tags to populate our filter buttons
+  const uniqueTags = Array.from(
+    new Set(postsWithTags.flatMap((p) => p.tags)),
+  ).sort();
+
+  // 4. Parse active and excluded tags
+  const activeTags = tagQuery.split(",").filter(Boolean);
+  const excludedTags = excludeQuery.split(",").filter(Boolean);
+
+  // 5. Apply URL filters (Search, Include Tags, Exclude Tags)
+  let filteredPosts = postsWithTags.filter((post) => {
+    const matchesSearch =
+      !searchQuery ||
+      post.title.toLowerCase().includes(searchQuery) ||
+      post.contentHtml.toLowerCase().includes(searchQuery);
+
+    const matchesTags =
+      activeTags.length === 0 || activeTags.every((t) => post.tags.includes(t));
+
+    // Ensure the post does NOT contain any of the excluded tags
+    const hasNoExcludedTags =
+      excludedTags.length === 0 ||
+      !excludedTags.some((t) => post.tags.includes(t));
+
+    return matchesSearch && matchesTags && hasNoExcludedTags;
+  });
+
+  // 6. Apply Date Sorting
+  filteredPosts = filteredPosts.sort((a, b) => {
+    const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+
+    if (sortQuery === "asc") return dateA - dateB; // Oldest first
+    return dateB - dateA; // Newest first (default)
+  });
+
+  // --- PAGINATION EXECUTION ---
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+
+  return (
+    <main className="min-h-screen bg-black bg-gradient-to-b from-[#05010f] to-[#1a0b2e] p-8 font-mono text-white selection:bg-[#ff00aa] selection:text-white">
+      <div className="max-w-4xl mx-auto">
+        <header className="mb-12 border-b-2 border-[#00f3ff] pb-6 flex justify-between items-end">
+          <div>
+            <h1 className="text-5xl font-bold text-[#00f3ff] uppercase tracking-tighter drop-shadow-[0_0_10px_rgba(0,243,255,0.8)]">
+              VISTEK_NET
+            </h1>
+            <p className="text-[#ff00aa] mt-2 uppercase tracking-widest text-sm font-bold">
+              // Public_Transmission_Log
+            </p>
+          </div>
+          <Link
+            href="/login"
+            className="text-xs text-[#00f3ff]/50 hover:text-[#00f3ff] uppercase tracking-widest transition-colors"
+          >
+            [SYS_ADMIN]
+          </Link>
+        </header>
+
+        <SearchFilter allTags={uniqueTags} />
+
+        <div className="flex flex-col gap-8">
+          {paginatedPosts.length === 0 ? (
+            <div className="border border-[#ff00aa]/30 p-8 text-center bg-[#1a0b2e]/50">
+              <p className="text-[#ff00aa] animate-pulse uppercase tracking-widest font-bold">
+                No active transmissions match query...
+              </p>
+            </div>
+          ) : (
+            paginatedPosts.map((post) => (
+              <article
+                key={post.id}
+                className="border border-[#00f3ff]/30 bg-black/50 p-6 hover:border-[#00f3ff] hover:shadow-[0_0_15px_rgba(0,243,255,0.2)] transition-all group relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#00f3ff] to-[#ff00aa] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                <div className="flex gap-2 mb-3">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] uppercase tracking-widest text-black bg-[#ff00aa] px-2 py-0.5 font-bold"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <Link href={`/${post.slug}`}>
+                  <h2 className="text-2xl font-bold text-[#00f3ff] uppercase tracking-wide group-hover:text-white transition-colors mb-2">
+                    {post.title}
+                  </h2>
+                </Link>
+
+                <p className="text-[#00f3ff]/50 text-xs uppercase tracking-widest">
+                  LOGGED:{" "}
+                  {post.createdAt
+                    ? new Date(post.createdAt).toLocaleDateString()
+                    : "UNKNOWN"}
+                </p>
+              </article>
+            ))
+          )}
+        </div>
+
+        {/* INJECT PAGINATION CONTROLS */}
+        <Pagination currentPage={currentPage} totalPages={totalPages} />
+      </div>
+    </main>
+  );
+}
+</file>
+
+<file path="src/components/Pagination.tsx">
+"use client";
+
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+
+export default function Pagination({
+  totalPages,
+  currentPage,
+}: {
+  totalPages: number;
+  currentPage: number;
+}) {
+  const searchParams = useSearchParams();
+
+  const createPageUrl = (pageNumber: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("page", pageNumber.toString());
+    return `/?${params.toString()}`;
+  };
+
+  if (totalPages <= 1) return null;
+
+  // Generate an array of numbers: [1, 2, 3, ...]
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  return (
+    <div className="mt-12 flex justify-between items-center border-t border-[#00f3ff]/30 pt-6 font-mono">
+      {/* LEFT SIDE: PREV BUTTON */}
+      <div className="flex-1 flex justify-start">
+        {currentPage > 1 && (
+          <Link
+            href={createPageUrl(currentPage - 1)}
+            className="text-[#ff00aa] hover:text-[#00f3ff] transition-colors text-sm uppercase tracking-widest border border-[#ff00aa] hover:border-[#00f3ff] px-4 py-2 bg-black"
+          >
+            {"<- PREV"}
+          </Link>
+        )}
+      </div>
+
+      {/* CENTER: PAGE NUMBERS */}
+      <div className="flex gap-2 overflow-x-auto px-4">
+        {pageNumbers.map((num) => {
+          const isActive = num === currentPage;
+          return (
+            <Link
+              key={num}
+              href={createPageUrl(num)}
+              className={`flex items-center justify-center min-w-[32px] h-8 text-xs font-bold border transition-all cursor-pointer ${
+                isActive
+                  ? "bg-[#ff00aa] text-black border-[#ff00aa] shadow-[0_0_10px_rgba(255,0,170,0.6)]"
+                  : "bg-black text-[#00f3ff] border-[#00f3ff]/50 hover:border-[#00f3ff] hover:shadow-[0_0_8px_rgba(0,243,255,0.4)]"
+              }`}
+            >
+              {num}
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* RIGHT SIDE: NEXT BUTTON */}
+      <div className="flex-1 flex justify-end">
+        {currentPage < totalPages && (
+          <Link
+            href={createPageUrl(currentPage + 1)}
+            className="text-[#ff00aa] hover:text-[#00f3ff] transition-colors text-sm uppercase tracking-widest border border-[#ff00aa] hover:border-[#00f3ff] px-4 py-2 bg-black"
+          >
+            {"NEXT ->"}
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/components/SearchFilter.tsx">
+"use client";
+
+import { useRouter, useSearchParams } from "next/navigation";
+
+export default function SearchFilter({ allTags }: { allTags: string[] }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const currentQ = searchParams.get("q") || "";
+  const currentSort = searchParams.get("sort") || "desc"; // default newest first
+  const currentTags = searchParams.get("tag")?.split(",").filter(Boolean) || [];
+  const excludedTags =
+    searchParams.get("exclude")?.split(",").filter(Boolean) || [];
+
+  const updateUrl = (key: string, value: string) => {
+    const params = new URLSearchParams(searchParams);
+    if (value) params.set(key, value);
+    else params.delete(key);
+    params.delete("page"); // Reset page on filter change
+    router.replace(`/?${params.toString()}`);
+  };
+
+  // Cycles through: Not Selected -> Included -> Excluded -> Not Selected
+  const toggleTag = (tag: string) => {
+    const params = new URLSearchParams(searchParams);
+    let newIncluded = [...currentTags];
+    let newExcluded = [...excludedTags];
+
+    if (newIncluded.includes(tag)) {
+      // Move from Included to Excluded
+      newIncluded = newIncluded.filter((t) => t !== tag);
+      newExcluded.push(tag);
+    } else if (newExcluded.includes(tag)) {
+      // Move from Excluded back to Off
+      newExcluded = newExcluded.filter((t) => t !== tag);
+    } else {
+      // Move from Off to Included
+      newIncluded.push(tag);
+    }
+
+    if (newIncluded.length > 0) params.set("tag", newIncluded.join(","));
+    else params.delete("tag");
+
+    if (newExcluded.length > 0) params.set("exclude", newExcluded.join(","));
+    else params.delete("exclude");
+
+    params.delete("page");
+    router.replace(`/?${params.toString()}`);
+  };
+
+  return (
+    <div className="mb-10 border border-[#00f3ff]/30 bg-black/50 p-4 shadow-[0_0_15px_rgba(0,243,255,0.05)]">
+      <div className="flex flex-col md:flex-row gap-4 mb-4">
+        <input
+          type="text"
+          placeholder="SEARCH_DATABANKS..."
+          defaultValue={currentQ}
+          onChange={(e) => updateUrl("q", e.target.value)}
+          className="flex-1 bg-black border border-[#ff00aa]/50 focus:border-[#00f3ff] focus:shadow-[0_0_10px_rgba(0,243,255,0.4)] px-4 py-3 text-[#00f3ff] outline-none placeholder-[#00f3ff]/30 uppercase tracking-widest font-mono text-sm transition-all"
+        />
+
+        <select
+          value={currentSort}
+          onChange={(e) => updateUrl("sort", e.target.value)}
+          className="bg-black border border-[#ff00aa]/50 focus:border-[#00f3ff] px-4 py-3 text-[#ff00aa] outline-none uppercase tracking-widest font-mono text-sm cursor-pointer"
+        >
+          <option value="desc">SORT: NEWEST</option>
+          <option value="asc">SORT: OLDEST</option>
+        </select>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {allTags.map((tag) => {
+          const isIncluded = currentTags.includes(tag);
+          const isExcluded = excludedTags.includes(tag);
+
+          let btnStyle =
+            "bg-black text-[#00f3ff] border-[#00f3ff]/30 hover:border-[#00f3ff]";
+          if (isIncluded)
+            btnStyle =
+              "bg-[#ff00aa] text-black border-[#ff00aa] shadow-[0_0_10px_rgba(255,0,170,0.6)] font-bold";
+          if (isExcluded)
+            btnStyle =
+              "bg-red-600/20 text-red-500 border-red-600 line-through font-bold";
+
+          return (
+            <button
+              key={tag}
+              onClick={() => toggleTag(tag)}
+              className={`text-xs uppercase tracking-widest px-3 py-1.5 border transition-all cursor-pointer ${btnStyle}`}
+            >
+              #{tag}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/db/index.ts">
+import { config } from "dotenv";
+// Force environment variables to load immediately before anything else
+config();
+
+import { drizzle } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
+import * as schema from "./schema";
+
+//  crash loudly if the URL is missing instead of failing silently to localhost
+if (!process.env.DATABASE_URL) {
+  throw new Error("CRITICAL: DATABASE_URL is missing or undefined.");
+}
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  // Some cloud providers explicitly require SSL for remote connections
+  ssl:
+    process.env.NODE_ENV === "production"
+      ? undefined
+      : { rejectUnauthorized: false },
+});
+
+export const db = drizzle(pool, { schema });
+</file>
+
+<file path="src/db/schema.ts">
+import {
+  pgTable,
+  uuid,
+  varchar,
+  text,
+  boolean,
+  integer,
+  timestamp,
+  jsonb,
+  unique,
+  index,
+  primaryKey,
+} from "drizzle-orm/pg-core";
+
+export const posts = pgTable(
+  "posts",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    slug: varchar("slug", { length: 255 }).notNull().unique(),
+    title: varchar("title", { length: 255 }).notNull(),
+    contentHtml: text("content_html").notNull(),
+    thumbnailUrl: varchar("thumbnail_url", { length: 512 }),
+    isDraft: boolean("is_draft").default(true),
+    likes: integer("likes").default(0).notNull(),
+    readTimeMinutes: integer("read_time_minutes").default(0),
+    publishedAt: timestamp("published_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
+  },
+  (table) => [
+    index("idx_posts_slug").on(table.slug),
+    index("idx_posts_published_at").on(table.publishedAt),
+  ],
+);
+
+export const tags = pgTable("tags", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  name: varchar("name", { length: 100 }).notNull().unique(),
+  slug: varchar("slug", { length: 100 }).notNull().unique(),
+  isAliasFor: uuid("is_alias_for"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});
+
+export const postTags = pgTable(
+  "post_tags",
+  {
+    postId: uuid("post_id")
+      .notNull()
+      .references(() => posts.id, { onDelete: "cascade" }),
+    tagId: uuid("tag_id")
+      .notNull()
+      .references(() => tags.id, { onDelete: "cascade" }),
+  },
+  (table) => [primaryKey({ columns: [table.postId, table.tagId] })],
+);
+
+export const postRevisions = pgTable(
+  "post_revisions",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    postId: uuid("post_id")
+      .notNull()
+      .references(() => posts.id, { onDelete: "cascade" }),
+    contentSnapshot: jsonb("content_snapshot").notNull(),
+    createdByAdmin: boolean("created_by_admin").default(true),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+  },
+  (table) => [index("idx_revisions_post_id").on(table.postId)],
+);
+
+export const likes = pgTable(
+  "likes",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    postId: uuid("post_id")
+      .notNull()
+      .references(() => posts.id, { onDelete: "cascade" }),
+    visitorHash: varchar("visitor_hash", { length: 255 }).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+  },
+  (table) => [
+    unique("unique_visitor_like").on(table.postId, table.visitorHash),
+    index("idx_likes_post_id").on(table.postId),
+  ],
+);
+
+export const admins = pgTable("admins", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  username: varchar("username", { length: 255 }).notNull().unique(),
+  passwordHash: varchar("password_hash", { length: 255 }).notNull(),
+  twoFactorSecret: varchar("two_factor_secret", { length: 255 }),
+  isTwoFactorEnabled: boolean("is_two_factor_enabled").default(false),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});
+</file>
+
+<file path="src/lib/session.ts">
+import { SignJWT, jwtVerify } from "jose";
+import { cookies } from "next/headers";
+
+const secretKey = process.env.JWT_SECRET;
+const key = new TextEncoder().encode(secretKey);
+
+export async function encrypt(payload: any) {
+  return await new SignJWT(payload)
+    .setProtectedHeader({ alg: "HS256" })
+    .setIssuedAt()
+    .setExpirationTime("7d") // Sessions last 7 days
+    .sign(key);
+}
+
+export async function decrypt(input: string): Promise<any> {
+  try {
+    const { payload } = await jwtVerify(input, key, { algorithms: ["HS256"] });
+    return payload;
+  } catch (error) {
+    return null;
+  }
+}
+
+export async function createSession(adminId: string) {
+  const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  const session = await encrypt({ adminId, expires });
+
+  const cookieStore = await cookies();
+  cookieStore.set("admin_session", session, {
+    httpOnly: true, // Prevents XSS attacks
+    secure: process.env.NODE_ENV === "production",
+    expires: expires,
+    sameSite: "lax",
+    path: "/",
+  });
+}
+
+export async function deleteSession() {
+  const cookieStore = await cookies();
+  cookieStore.delete("admin_session");
+}
+</file>
+
+<file path="src/middleware.ts">
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { decrypt } from "@/lib/session";
+
+export async function middleware(request: NextRequest) {
+  const path = request.nextUrl.pathname;
+
+  // protecting only the admin routes
+  if (path.startsWith("/admin")) {
+    const cookie = request.cookies.get("admin_session")?.value;
+    const session = cookie ? await decrypt(cookie) : null;
+
+    // If the session is missing, expired, or tampered with, kick them to login
+    if (!session) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+  }
+
+  return NextResponse.next();
+}
+
+// telling Next.js exactly which routes this middleware should run on
+export const config = {
+  matcher: ["/admin/:path*"],
+};
+</file>
+
+<file path=".gitignore">
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+</file>
+
+<file path="AGENTS.md">
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
+</file>
+
+<file path="CLAUDE.md">
+@AGENTS.md
+</file>
+
+<file path="drizzle.config.ts">
+import { defineConfig } from "drizzle-kit";
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
+export default defineConfig({
+  schema: "./src/db/schema.ts",
+  out: "./src/db/migrations",
+  dialect: "postgresql",
+  dbCredentials: {
+    url: process.env.DATABASE_URL!,
+  },
+});
+</file>
+
+<file path="eslint.config.mjs">
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+</file>
+
+<file path="next.config.ts">
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+};
+
+export default nextConfig;
+</file>
+
+<file path="package.json">
+{
+  "name": "vistek",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "date-fns": "^4.4.0",
+    "dompurify": "^3.4.15",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "jose": "^6.2.12",
+    "marked": "^18.0.13",
+    "next": "16.3.5",
+    "pg": "^8.23.0",
+    "qrcode": "^1.5.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "speakeasy": "^2.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/bcrypt": "^6.0.0",
+    "@types/node": "^20",
+    "@types/pg": "^8.23.1",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/speakeasy": "^2.0.10",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+</file>
+
+<file path="postcss.config.mjs">
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+</file>
+
+<file path="README.md">
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
+</file>
+
+</files>

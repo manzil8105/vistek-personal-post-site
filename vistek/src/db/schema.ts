@@ -21,6 +21,7 @@ export const posts = pgTable(
     contentHtml: text("content_html").notNull(),
     thumbnailUrl: varchar("thumbnail_url", { length: 512 }),
     isDraft: boolean("is_draft").default(true),
+    likes: integer("likes").default(0).notNull(),
     readTimeMinutes: integer("read_time_minutes").default(0),
     publishedAt: timestamp("published_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
