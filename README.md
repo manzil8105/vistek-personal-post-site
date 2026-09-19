@@ -48,29 +48,29 @@ ADMIN_SECRET_KEY=cyberpunk-2026
 ( The .env file is intentionally ignored by Git to protect credentials). 
 
 ## Database Setup
-Because this system uses a "Phantom Protocol" for security, there is no public "Sign Up" page,  the database must be manually initialized and inject the first root admin directly into the Supabase server.
+Because this system uses a "Phantom Protocol" for security, there is no public "Sign Up" page;  the database must be manually initialised, and the first root admin must be injected directly into the Supabase server.
 
 ### Phase 1
-go to Supabase and click New Project.
-Select organization, then name the project.
+Go to Supabase and click New Project.
+Select an organisation, then name the project.
 Create a  Database Password. Save this password somewhere safe; it will be needed it in Phase 2. 
 Select a region closest and click Create new project.
 Wait 2-3 minutes. 
 
 ### Phase 2
-In Supabase dashboard, go to the Project Settings 
+In the Supabase dashboard, go to Project Settings 
 Click on Database in the sidebar menu.
 Scroll down to the Connection string section and select the URI tab.
 Copy the provided URL. It will look kinda like this:
 postgresql://postgres.your_project_ref:[YOUR-PASSWORD]@aws-0-region.pooler.supabase.com:6543/postgres
-Open local .env file, paste it as DATABASE_URL.
+Open the local .env file and paste it as DATABASE_URL.
 Replace the [YOUR-PASSWORD] bracket with the actual database password 
 
 ### Phase 3: Push the Schema
-tables must be built (Posts, Tags, PostTags, Admins) in the database before the system can function. two way: automatically via the terminal, or manually via the Supabase SQL Editor.
+Tables must be built (Posts, Tags, PostTags, Admins) in the database before the system can function. Two ways: automatically via the terminal, or manually via the Supabase SQL Editor.
 
 ### Option A: Automated (Terminal)
-Run the Drizzle ORM push command to automatically read `schema.ts` file and create the tables:
+Run the Drizzle ORM push command to automatically read the `schema.ts` file and create the tables:
 ```bash
 npx drizzle-kit push
 ```
@@ -116,13 +116,13 @@ CREATE TABLE IF NOT EXISTS "postTags" (
 ## Phase 4 for high level security 
 
 1. Go to a secure hash generator like Bcrypt-Generator.com. 
-2. Type desired admin password into the String box (like MySuperSecretPassword2026). 
+2. Type the desired admin password into the String box (like MySuperSecretPassword2026). 
 3. Set the Rounds to 10. 
 4. Click Encrypt and copy the resulting hash.
-5. It will look like a random string of characters (like this 2a10$X8...)
+5. It will look like a random string of characters (like this: 2a10$X8...)
 
 ## Phase 5: 
-Go back to Supabase dashboard. 
+Go back to the Supabase dashboard. 
 Click on the Table Editor icon in the left sidebar (the menu icon with lines and squares).
 Select the admins table from the list.
 Click the green Insert row button in the top right corner.
@@ -133,7 +133,24 @@ Fill out the fields:
 	Click Save.
 
 ## Local Run: 
-boot up local server, type (npm run dev) in terminal
+Boot up the local server, type (npm run dev) in the terminal
 navigate to Secret Knock URL (localhost:3000/gateway-override?key=secret key), 
-and log in using new username and the original raw password. 
-Navigate to http://localhost:3000 for public feed.
+and log in using the new username and the original raw password. 
+Navigate to http://localhost:3000 for the public feed. 
+
+## Deployment (Vercel)
+This system is strictly optimised for Vercel deployment. Because the `.env` file is hidden from GitHub, manual injection of security keys during the deployment phase must happen. 
+
+1. Log in to [Vercel](https://vercel.com) and click **Add New** -> **Project**.
+2. Import this GitHub repository.
+3. On the **Configure Project** screen, open the **Environment Variables** dropdown.
+4. Add the following three variables exactly as they appear in your local environment:
+   * `DATABASE_URL`: Your Supabase connection string.
+   * `JWT_SECRET`: Your secure random string for signing admin sessions.
+   * `ADMIN_SECRET_KEY`: The secret phrase required for the Secret Knock.
+5. Click **Deploy**.
+
+### Accessing the Live Network
+Once Vercel finishes the build, they will assign a production domain (e.g., `https://vistek-personal-site.vercel.app`).
+* **Public Feed:** Navigate directly to your assigned domain.
+* **Admin Dashboard:** Append your Secret Knock to the domain: `https://your-domain.vercel.app/gateway-override?key=YOUR_ADMIN_SECRET_KEY`
